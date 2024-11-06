@@ -1,4 +1,3 @@
-"use server";
 import {FC} from "react";
 import {Box, Paper, Typography} from "@mui/material";
 

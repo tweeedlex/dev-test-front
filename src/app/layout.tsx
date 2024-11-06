@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import React from "react";
 import {Container} from "@mui/material";
 import "./global.css";
-import Header from "../components/layout/header";
+import Header from "@/components/layout/header";
+import QueryProvider from "@/components/misc/query-provider/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <Header />
+      <QueryProvider>
+        <Header />
         <Container sx={{ bgcolor: "#ccc", height: "100vh" }}>
           {children}
         </Container>
+      </QueryProvider>
       </body>
     </html>
   );
