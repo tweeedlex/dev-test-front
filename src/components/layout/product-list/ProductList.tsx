@@ -3,6 +3,7 @@ import ProductCard from "@/components/layout/product-card";
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "@/requests/http/products";
 import ProductsData from "@/requests/types/ProductsData";
+import {Box} from "@mui/material";
 
 export default function ProductList({ initialData }: { initialData: ProductsData }) {
   const { data = initialData, isLoading, isError } = useQuery({
@@ -15,10 +16,10 @@ export default function ProductList({ initialData }: { initialData: ProductsData
   if (isError) return <p>Error loading products</p>;
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2 }}>
-      {data.products.map((item, index) => (
-        <ProductCard key={item.id} index={index} />
+    <Box sx={{ display: "grid", gridTemplateColumns: {xs: "repeat(2, 2fr)", md: "repeat(3, 1fr)"}, gap: 2 }}>
+      {data.products.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
-    </div>
+    </Box>
   );
 }

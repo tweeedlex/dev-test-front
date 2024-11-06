@@ -5,6 +5,5 @@ export const getProducts = async (limit: number, skip: number): Promise<Products
   const response = await apiRequest<ProductsData>("GET", "/products", {
     params: { limit, skip }
   });
-
   return response.data;
 };

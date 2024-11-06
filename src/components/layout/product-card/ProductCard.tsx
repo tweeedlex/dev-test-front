@@ -1,28 +1,46 @@
 import {FC} from "react";
 import {Box, Paper, Typography} from "@mui/material";
+import {Product} from "@/requests/types/ProductsData";
 
-type ProductCardProps = {
-  index: number;
+interface ProductCardProps {
+  product: Product;
 }
 
-const ProductCard: FC<ProductCardProps> = ({index}) => {
+const ProductCard: FC<ProductCardProps> = ({product}) => {
   return (
     <Paper
-      key={index}
+      key={product.id}
       component={"a"}
-      href={"/product/" + index}
+      href={"/product/" + product.id}
       sx={{p: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 1}}
     >
-      <Typography variant={"h6"}>Name</Typography>
-      <Box sx={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, alignItems: "center"}}>
-        <Typography>Category</Typography>
-        <Typography>Brand</Typography>
-        <Typography>-Left: 5</Typography>
-        <Typography>1000$</Typography>
-        <Typography>-10%</Typography>
-        <Typography>-5/5</Typography>
+      <Box
+        component={"img"}
+        src={product.images[0]}
+        alt={"Product image"}
+        sx={{
+          width: "100%",
+          height: 200,
+          objectFit: "contain",
+        }}
+      ></Box>
+      <Typography>{product.title}</Typography>
+      <Box sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 2,
+          alignItems: "center"
+      }}>
+        <Typography>{product.brand}</Typography>
+        <span></span>
+        <Typography>{product.category}</Typography>
+        <Typography>{product.price}$</Typography>
+        <Typography sx={{color: "red"}}>-{product.discountPercentage}%</Typography>
+        <Typography>
+          {product.rating}/5
+          <span role="img" aria-label="star">⭐</span>
+        </Typography>
       </Box>
-      <Typography>-Desc</Typography>
     </Paper>
   );
 }

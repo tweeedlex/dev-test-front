@@ -20,7 +20,7 @@ export default function RootLayout({
       <body>
       <QueryProvider>
         <Header />
-        <Container sx={{ bgcolor: "#ccc", height: "100vh" }}>
+        <Container sx={{ bgcolor: "#ccc", minHeight: "100vh", p: "0 0 20px 0" }}>
           {children}
         </Container>
       </QueryProvider>
