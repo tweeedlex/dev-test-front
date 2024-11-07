@@ -1,6 +1,6 @@
 import Preloader from "@/components/ui/preloader";
 
-export default function Loading() {
+export default async function Loading() {
   return (
     <Preloader />
   );
