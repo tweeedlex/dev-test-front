@@ -1,20 +1,20 @@
-import {getProduct} from "@/requests/http/products";
-import {Box, Typography} from "@mui/material";
+import { getProduct } from "@/requests/http/products";
+import { Box, Typography } from "@mui/material";
 
 interface ProductPageProps {
   params: {
-    id: number;
+    id: string;
   }
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await getProduct(params.id);
+  const product = await getProduct(Number(params.id));
 
   return (
     <>
-      <Box sx={{py: 2, display: "flex", gap: 3, width: "100%", justifyContent: "center"}}>
-        <Box sx={{display: "flex", justifyContent: "center"}}>
-          <img src={product.images[0]} alt="Product image" style={{maxWidth: "100%", maxHeight: 400}}/>
+      <Box sx={{ py: 2, display: "flex", gap: 3, width: "100%", justifyContent: "center" }}>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <img src={product.images[0]} alt="Product image" style={{ maxWidth: "100%", maxHeight: 400 }} />
         </Box>
         <Box>
           <Typography component={"h1"} sx={{
@@ -29,7 +29,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <span role="img" aria-label="star">⭐</span>
           </Typography>
           <Typography>{product.price}$ </Typography>
-          <Typography sx={{color: "red", fontWeight: "bold"}}>-{product.discountPercentage}%</Typography>
+          <Typography sx={{ color: "red", fontWeight: "bold" }}>-{product.discountPercentage}%</Typography>
           <Typography>-{product.availabilityStatus}</Typography>
         </Box>
       </Box>
