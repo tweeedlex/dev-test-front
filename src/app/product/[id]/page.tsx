@@ -1,14 +1,17 @@
 import { getProduct } from "@/requests/http/products";
 import { Box, Typography } from "@mui/material";
 
-interface ProductPageProps {
-  params: {
-    id: string;
-  }
+type Params = {
+  id: string;
+}
+
+type ProductPageProps = {
+  params: Promise<Params>;
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await getProduct(Number(params.id));
+  const resolvedParams: Params = await params;
+  const product = await getProduct(Number(resolvedParams.id));
 
   return (
     <>
