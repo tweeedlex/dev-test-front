@@ -1,6 +1,7 @@
+"use client";
 import {Box, CircularProgress} from "@mui/material";
 
-export default async function Preloader() {
+export default function Preloader() {
   return (
     <Box
       sx={{
