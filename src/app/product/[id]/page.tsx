@@ -23,7 +23,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <Typography component={"h1"} sx={{
             fontSize: 24,
             fontWeight: "bold",
-            textAlign: "center"
+            textAlign: "center",
           }}>{product.title}</Typography>
           <Typography>{product.category}</Typography>
           <Typography>{product.brand}</Typography>

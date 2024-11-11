@@ -33,7 +33,7 @@ export default function ProductList({ initialData }: { initialData: ProductsData
           xs: "repeat(2, 2fr)",
           md: "repeat(3, 1fr)"
         },
-        gap: 2,
+        gap: {xs: 1, sm: 2 },
         minHeight: '500px'
       }}>
         {data.products?.map((product) => (

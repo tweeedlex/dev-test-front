@@ -1,3 +1,4 @@
+"use client";
 import {FC} from "react";
 import {Box, Paper, Typography} from "@mui/material";
 import {Product} from "@/requests/types/ProductsData";
@@ -12,7 +13,7 @@ const ProductCard: FC<ProductCardProps> = ({product}) => {
       key={product.id}
       component={"a"}
       href={"/product/" + product.id}
-      sx={{p: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 1}}
+      sx={{p: {xs: 1, sm: 2 }, display: "flex", flexDirection: "column", alignItems: "center", gap: 1}}
     >
       <Box
         component={"img"}
@@ -20,19 +21,20 @@ const ProductCard: FC<ProductCardProps> = ({product}) => {
         alt={"Product image"}
         sx={{
           width: "100%",
-          height: 200,
+          height: {xs: 100, sm: 200},
           objectFit: "contain",
         }}
       ></Box>
       <Typography>{product.title}</Typography>
       <Box sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 2,
-          alignItems: "center"
+          gridTemplateColumns: {xs: "repeat(2, 1fr)", sm: "repeat(3, 1fr)"},
+          gap: {xs: 1, sm: 2 },
+          alignItems: "center",
+          width: "100%"
       }}>
         <Typography>{product.brand}</Typography>
-        <span></span>
+        <Typography sx={{ display: {xs: "none", sm: "block"} }}></Typography>
         <Typography>{product.category}</Typography>
         <Typography>{product.price}$</Typography>
         <Typography sx={{color: "red"}}>-{product.discountPercentage}%</Typography>
